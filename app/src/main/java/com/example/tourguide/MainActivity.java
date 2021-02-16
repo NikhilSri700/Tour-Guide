@@ -2,13 +2,17 @@ package com.example.tourguide;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static int SPLASH_SREEEN = 2500;
 
     Animation topAnim, bottomAnim;
     ImageView appLogo, appName;
@@ -27,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
 
         appLogo.setAnimation(topAnim);
         appName.setAnimation(bottomAnim);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(MainActivity.this, LoginPage.class);
+                startActivity(i);
+                finish();
+            }
+        }, SPLASH_SREEEN);
 
     }
 }
